@@ -1,20 +1,11 @@
 // components/QuestionSelection.tsx
-import React from 'react'
-import {
-	Card,
-	Checkbox,
-	List,
-	Typography,
-	Button,
-	Space,
-	Divider,
-	Flex,
-} from 'antd'
 import {
 	QuestionCircleOutlined,
 	CheckSquareOutlined,
 	CloseSquareOutlined,
 } from '@ant-design/icons'
+import { Card, Checkbox, List, Typography, Button, Space, Flex } from 'antd'
+import React from 'react'
 import { QuestionSelectionProps } from '../types/selection'
 
 const { Title, Text } = Typography
@@ -27,16 +18,6 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 }) => {
 	const isAllSelected =
 		selectedQuestions.length === questions.length && questions.length > 0
-	const isIndeterminate =
-		selectedQuestions.length > 0 && selectedQuestions.length < questions.length
-
-	const handleSelectAll = () => {
-		if (isAllSelected) {
-			onSelectionChange([])
-		} else {
-			onSelectionChange(questions.map((q) => q.id))
-		}
-	}
 
 	const handleQuestionToggle = (questionId: string) => {
 		const newSelection = selectedQuestions.includes(questionId)

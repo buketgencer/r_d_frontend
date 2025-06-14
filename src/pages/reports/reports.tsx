@@ -1,10 +1,10 @@
 import { PlusOutlined } from '@ant-design/icons'
 import { Typography, Button } from 'antd'
 import React, { useState } from 'react'
-import { usePDFs } from './hooks/usePDFs'
+import { useTranslation } from 'react-i18next'
 import { PDFTable } from './components/PDFTable'
 import { UploadModal } from './components/UploadModal'
-import { useTranslation } from 'react-i18next'
+import { usePDFs } from './hooks/usePDFs'
 
 const { Title } = Typography
 

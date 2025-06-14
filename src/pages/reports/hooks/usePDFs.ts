@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
 import { message } from 'antd'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { pdfService } from '../services/pdfService'
-import { PDFUploadResponse } from '../types'
-import axios from 'axios'
 
 export const usePDFs = () => {
 	const [pdfs, setPDFs] = useState<string[]>([])
@@ -97,6 +96,7 @@ export const usePDFs = () => {
 
 	useEffect(() => {
 		fetchPDFs()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return {

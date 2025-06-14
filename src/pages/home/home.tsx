@@ -1,11 +1,11 @@
 // pages/Home.tsx
+import { PlayCircleOutlined } from '@ant-design/icons'
+import { Row, Col, Button, Alert, Typography, Divider, Flex } from 'antd'
 import React from 'react'
-import { Row, Col, Button, Alert, Space, Typography, Divider, Flex } from 'antd'
-import { PlayCircleOutlined, ReloadOutlined } from '@ant-design/icons'
-import { useSelections } from './hooks/selection'
-import { SystemMetrics } from './components/SystemMetrics'
-import { QuestionSelection } from './components/QuestionSelection'
 import { PDFSelection } from './components/PDFSelection'
+import { QuestionSelection } from './components/QuestionSelection'
+import { SystemMetrics } from './components/SystemMetrics'
+import { useSelections } from './hooks/selection'
 
 const { Title } = Typography
 
@@ -110,7 +110,14 @@ export const Home: React.FC = () => {
 
 				<Flex
 					justify='center'
-					style={{ marginBottom: '32px' }}
+					style={{
+						marginBottom: '32px',
+						position: 'sticky',
+						bottom: '24px',
+						zIndex: 1000,
+						width: 'auto',
+						marginLeft: 'auto',
+					}}
 				>
 					<Button
 						type='primary'
@@ -118,7 +125,7 @@ export const Home: React.FC = () => {
 						icon={<PlayCircleOutlined />}
 						onClick={handleProcessSelections}
 						disabled={disableProcessSelections}
-						style={{ minWidth: '200px' }}
+						style={{ minWidth: '200px', width: '100%' }}
 					>
 						Process Selections
 					</Button>

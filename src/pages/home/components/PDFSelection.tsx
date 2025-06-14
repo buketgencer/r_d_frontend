@@ -1,11 +1,11 @@
 // components/PDFSelection.tsx
-import React from 'react'
-import { Card, Radio, List, Typography, Space, Button } from 'antd'
 import {
 	FileTextOutlined,
 	ClearOutlined,
 	FilePdfOutlined,
 } from '@ant-design/icons'
+import { Card, Radio, List, Typography, Space, Button } from 'antd'
+import React from 'react'
 import { PDFSelectionProps } from '../types/selection'
 
 const { Title, Text } = Typography

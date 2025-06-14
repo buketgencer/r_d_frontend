@@ -71,8 +71,10 @@ export const useSelections = () => {
 			counts: {
 				totalQuestions: questions.length,
 				selectedQuestions: selections.selectedQuestions.length,
+				selectedQuestionsData: selections.selectedQuestions,
 				totalPDFs: pdfFiles.length,
 				hasSelectedPDF: !!selections.selectedPDF,
+				selectedPDFData: pdfFiles.find((p) => p === selections.selectedPDF),
 			},
 		}
 	}

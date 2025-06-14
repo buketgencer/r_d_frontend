@@ -1,11 +1,11 @@
 import { PlusOutlined } from '@ant-design/icons'
 import { Typography, Button } from 'antd'
 import React, { useState } from 'react'
-import { Question } from './types'
-import { useQuestions } from './hooks/useQuestions'
-import { QuestionTable } from './components/QuestionTable'
-import { ViewModal, AddModal, EditModal } from './components/QuestionModals'
 import { useTranslation } from 'react-i18next'
+import { ViewModal, AddModal, EditModal } from './components/QuestionModals'
+import { QuestionTable } from './components/QuestionTable'
+import { useQuestions } from './hooks/useQuestions'
+import { Question } from './types'
 
 const { Title } = Typography
 

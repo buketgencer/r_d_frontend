@@ -1,4 +1,4 @@
-import { Modal, Form, Input, Typography } from 'antd'
+import { Modal, Form, Input, Typography, FormInstance } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { Question, QuestionCreate } from '../types'
 
@@ -58,7 +58,7 @@ export const ViewModal: React.FC<ViewModalProps> = ({
 }
 
 interface QuestionFormProps {
-	form: any
+	form: FormInstance<QuestionCreate>
 	onSubmit: (values: QuestionCreate) => Promise<boolean>
 	initialValues?: QuestionCreate
 }

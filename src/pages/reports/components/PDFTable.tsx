@@ -1,10 +1,10 @@
-import React from 'react'
-import { Table, Button, Space, Popconfirm } from 'antd'
 import {
 	DownloadOutlined,
 	EyeOutlined,
 	DeleteOutlined,
 } from '@ant-design/icons'
+import { Table, Button, Space, Popconfirm } from 'antd'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 interface PDFTableProps {
@@ -34,7 +34,7 @@ export const PDFTable: React.FC<PDFTableProps> = ({
 			title: t('reports.table.actions'),
 			key: 'actions',
 			width: 150,
-			render: (_: any, record: { filename: string }) => (
+			render: (_: unknown, record: { filename: string }) => (
 				<Space size='small'>
 					<Button
 						type='text'

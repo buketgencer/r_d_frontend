@@ -1,8 +1,8 @@
-import { Modal, Upload, Button, message } from 'antd'
 import { InboxOutlined } from '@ant-design/icons'
-import { useTranslation } from 'react-i18next'
+import { Modal, Upload, Button, message } from 'antd'
 import type { UploadFile, RcFile } from 'antd/es/upload/interface'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const { Dragger } = Upload
 

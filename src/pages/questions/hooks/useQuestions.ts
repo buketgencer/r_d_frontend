@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
 import { message } from 'antd'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Question, QuestionCreate } from '../types'
 import { questionService } from '../services/questionService'
+import { Question, QuestionCreate } from '../types'
 
 export const useQuestions = () => {
 	const [questions, setQuestions] = useState<Question[]>([])
@@ -61,6 +61,7 @@ export const useQuestions = () => {
 
 	useEffect(() => {
 		fetchQuestions()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return {
