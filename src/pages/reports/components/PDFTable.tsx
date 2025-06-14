@@ -6,10 +6,22 @@ import {
 	DeleteOutlined,
 } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
-import { usePDFs } from '../hooks/usePDFs'
 
-export const PDFTable: React.FC = () => {
-	const { pdfs, loading, downloadPDF, previewPDF, deletePDF } = usePDFs()
+interface PDFTableProps {
+	pdfs: string[]
+	loading: boolean
+	downloadPDF: (filename: string) => void
+	previewPDF: (filename: string) => void
+	deletePDF: (filename: string) => void
+}
+
+export const PDFTable: React.FC<PDFTableProps> = ({
+	pdfs,
+	loading,
+	downloadPDF,
+	previewPDF,
+	deletePDF,
+}) => {
 	const { t } = useTranslation()
 
 	const columns = [
@@ -60,8 +72,18 @@ export const PDFTable: React.FC = () => {
 			columns={columns}
 			dataSource={pdfs.map((filename) => ({ key: filename, filename }))}
 			loading={loading}
-			pagination={false}
 			locale={{ emptyText: t('reports.table.noData') }}
+			pagination={{
+				pageSize: 10,
+				showSizeChanger: true,
+				showQuickJumper: true,
+				showTotal: (total, range) =>
+					t('questions.table.pagination.range', {
+						from: range[0],
+						to: range[1],
+						total,
+					}),
+			}}
 		/>
 	)
 }

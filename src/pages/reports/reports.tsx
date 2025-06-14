@@ -10,7 +10,8 @@ const { Title } = Typography
 
 export const Reports: React.FC = () => {
 	const { t } = useTranslation()
-	const { pdfs, loading, uploadPDF } = usePDFs()
+	const { pdfs, loading, uploadPDF, deletePDF, downloadPDF, previewPDF } =
+		usePDFs()
 	const [uploadModalVisible, setUploadModalVisible] = useState(false)
 
 	const handleUpload = () => {
@@ -45,7 +46,13 @@ export const Reports: React.FC = () => {
 					{t('reports.addNew')}
 				</Button>
 			</div>
-			<PDFTable />
+			<PDFTable
+				pdfs={pdfs}
+				loading={loading}
+				downloadPDF={downloadPDF}
+				previewPDF={previewPDF}
+				deletePDF={deletePDF}
+			/>
 			<UploadModal
 				visible={uploadModalVisible}
 				onClose={handleUploadModalClose}
