@@ -61,6 +61,33 @@
 			"loadError": "Sorular yüklenirken hata oluştu"
 		}
 	},
+	"reports": {
+		"title": "Raporlar",
+		"addNew": "Yeni PDF Ekle",
+		"table": {
+			"title": "PDF Dosyaları",
+			"filename": "Dosya Adı",
+			"actions": "İşlemler",
+			"view": "Görüntüle",
+			"download": "İndir",
+			"delete": "Sil",
+			"noData": "PDF dosyası bulunamadı",
+			"pagination": {
+				"range": "Toplam {{total}} dosyadan {{from}}-{{to}} arası"
+			}
+		},
+		"upload": {
+			"dragText": "PDF dosyasını yüklemek için tıklayın veya bu alana sürükleyin",
+			"hint": "Sadece PDF dosyalarına izin verilir. Maksimum dosya boyutu: 10MB."
+		},
+		"messages": {
+			"loadError": "PDF dosyaları yüklenemedi",
+			"uploadError": "PDF yüklenemedi",
+			"downloadError": "PDF indirilemedi",
+			"deleteError": "PDF silinemedi",
+			"deleteConfirm": "Bu PDF dosyasını silmek istediğinizden emin misiniz?"
+		}
+	},
 	"theme": {
 		"light": "Açık",
 		"dark": "Koyu",
@@ -71,5 +98,9 @@
 		"home": "Ana Sayfa",
 		"reports": "Raporlar",
 		"questions": "Sorular"
+	},
+	"common": {
+		"yes": "Evet",
+		"no": "Hayır"
 	}
 }

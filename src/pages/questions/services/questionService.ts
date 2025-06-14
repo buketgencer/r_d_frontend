@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Question, QuestionCreate, QuestionsResponse } from '../types'
+import { QuestionCreate, QuestionsResponse } from '../types'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL
 

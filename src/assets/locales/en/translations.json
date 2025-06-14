@@ -60,6 +60,36 @@
 			"loadError": "Failed to load questions"
 		}
 	},
+	"reports": {
+		"title": "Reports",
+		"addNew": "Add New PDF",
+		"table": {
+			"title": "PDF Files",
+			"filename": "Filename",
+			"actions": "Actions",
+			"view": "View",
+			"download": "Download",
+			"delete": "Delete",
+			"noData": "No PDF files found",
+			"pagination": {
+				"range": "{{from}}-{{to}} of {{total}} files"
+			}
+		},
+		"upload": {
+			"dragText": "Click or drag PDF file to this area to upload",
+			"hint": "Only PDF files are allowed. Maximum file size: 10MB."
+		},
+		"messages": {
+			"loadError": "Failed to load PDF files",
+			"uploadSuccess": "PDF uploaded successfully",
+			"uploadError": "Failed to upload PDF",
+			"downloadError": "Failed to download PDF",
+			"deleteError": "Failed to delete PDF",
+			"deleteConfirm": "Are you sure you want to delete this PDF file?",
+			"noFileSelected": "Please select a file",
+			"onlyPDF": "Only PDF files are allowed"
+		}
+	},
 	"theme": {
 		"light": "Light",
 		"dark": "Dark",
@@ -70,5 +100,9 @@
 		"home": "Home",
 		"reports": "Reports",
 		"questions": "Questions"
+	},
+	"common": {
+		"yes": "Yes",
+		"no": "No"
 	}
 }
