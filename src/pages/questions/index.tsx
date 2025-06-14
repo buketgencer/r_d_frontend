@@ -1,3 +1,1 @@
-import { Questions } from './questions'
-
-export { Questions }
+export { Questions } from './questions'

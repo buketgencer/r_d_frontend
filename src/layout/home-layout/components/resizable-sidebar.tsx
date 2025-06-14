@@ -3,9 +3,10 @@ import {
 	HomeOutlined,
 	QuestionCircleOutlined,
 } from '@ant-design/icons'
-import { Link } from '@tanstack/react-router'
+import { Link, useRouter } from '@tanstack/react-router'
 import { Layout, Menu } from 'antd'
-import React from 'react'
+import React, { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 const { Sider } = Layout
@@ -90,10 +91,50 @@ export const ResizableSidebar: React.FC<ResizableSidebarProps> = ({
 }
 
 const SidebarMenu: React.FC = () => {
+	const router = useRouter()
+	const currentRoute = router.state.location.pathname
+	const [selectedKey, setSelectedKey] = useState(currentRoute)
+	const { t } = useTranslation()
+
+	const menuItems = useMemo(
+		() => [
+			{
+				key: '/',
+				icon: <HomeOutlined />,
+				label: <Link to='/'>{t('menu.home')}</Link>,
+			},
+			{
+				key: '/rd-report-documents',
+				icon: <FileTextOutlined />,
+				label: <Link to='/rd-report-documents'>{t('menu.reports')}</Link>,
+			},
+			{
+				key: '/questions',
+				icon: <QuestionCircleOutlined />,
+				label: <Link to='/questions'>{t('menu.questions')}</Link>,
+			},
+		],
+		[t]
+	)
+
+	// Update selected key when route changes
+	React.useEffect(() => {
+		const matchingItem = menuItems.find(
+			(item) =>
+				currentRoute === item.key || currentRoute.startsWith(item.key + '/')
+		)
+		setSelectedKey(matchingItem?.key || '/')
+	}, [currentRoute, menuItems])
+
+	const handleMenuClick = ({ key }: { key: string }) => {
+		setSelectedKey(key)
+	}
+
 	return (
 		<Menu
 			mode='inline'
-			defaultSelectedKeys={['home']}
+			selectedKeys={[selectedKey]}
+			onClick={handleMenuClick}
 			style={{
 				height: '100vh',
 				border: 'none',
@@ -104,23 +145,7 @@ const SidebarMenu: React.FC = () => {
 				paddingLeft: 12,
 				paddingTop: 16,
 			}}
-			items={[
-				{
-					key: 'home',
-					icon: <HomeOutlined />,
-					label: <Link to='/'>Ana Sayfa</Link>,
-				},
-				{
-					key: 'pdfs',
-					icon: <FileTextOutlined />,
-					label: <Link to='/rd-report-documents'>Raporlar</Link>,
-				},
-				{
-					key: 'questions',
-					icon: <QuestionCircleOutlined />,
-					label: <Link to='/questions'>Sorular</Link>,
-				},
-			]}
+			items={menuItems}
 		/>
 	)
 }

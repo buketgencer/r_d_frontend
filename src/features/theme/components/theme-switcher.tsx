@@ -4,8 +4,9 @@ import {
 	CloudOutlined,
 	CloudFilled,
 } from '@ant-design/icons'
-import { Button, Dropdown, MenuProps, Space } from 'antd'
+import { Button, Dropdown, MenuProps } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { ThemeName } from '../utils/types'
 import { useTheme } from '../utils/useTheme'
 
@@ -15,6 +16,7 @@ type ThemeMenuItem = Required<MenuProps>['items'][number] & {
 
 export const ThemeSwitcher: React.FC = () => {
 	const { currentTheme, setTheme } = useTheme()
+	const { t } = useTranslation()
 
 	const getThemeIcon = (theme: ThemeName) => {
 		switch (theme) {
@@ -35,25 +37,25 @@ export const ThemeSwitcher: React.FC = () => {
 		{
 			key: 'light',
 			icon: getThemeIcon('light'),
-			label: 'Light',
+			label: t('theme.light'),
 			onClick: () => setTheme('light'),
 		},
 		{
 			key: 'dark',
 			icon: getThemeIcon('dark'),
-			label: 'Dark',
+			label: t('theme.dark'),
 			onClick: () => setTheme('dark'),
 		},
 		{
 			key: 'light-breeze',
 			icon: getThemeIcon('light-breeze'),
-			label: 'Light Breeze',
+			label: t('theme.lightBreeze'),
 			onClick: () => setTheme('light-breeze'),
 		},
 		{
 			key: 'midnight-breeze',
 			icon: getThemeIcon('midnight-breeze'),
-			label: 'Midnight Breeze',
+			label: t('theme.midnightBreeze'),
 			onClick: () => setTheme('midnight-breeze'),
 		},
 	]

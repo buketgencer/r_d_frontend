@@ -7,12 +7,20 @@ import {
 	useSidebarState,
 } from '@/layout/home-layout'
 
-const { Content } = AntLayout
+const { Content, Footer } = AntLayout
 
 const StyledContent = styled(Content)`
 	padding: 24px;
 	margin: 0;
 	min-height: 280px;
+`
+
+const StyledFooter = styled(Footer)`
+	text-align: center;
+	padding: 16px;
+	background-color: ${(props) => props.theme.colorBgContainer};
+	border-top: 1px solid ${(props) => props.theme.colorBorder};
+	z-index: 100;
 `
 
 interface LayoutProps {
@@ -22,10 +30,9 @@ interface LayoutProps {
 	children?: React.ReactNode
 }
 
-export const HomeLayout: React.FC<LayoutProps> = ({
+export const AppLayout: React.FC<LayoutProps> = ({
 	defaultSidebarWidth = 200,
 	minSidebarWidth = 120,
-
 	maxSidebarWidth = 600,
 	children,
 }) => {
@@ -58,6 +65,9 @@ export const HomeLayout: React.FC<LayoutProps> = ({
 					<StyledContent>{children}</StyledContent>
 				</AntLayout>
 			</AntLayout>
+			<StyledFooter>
+				© {new Date().getFullYear()} All rights reserved.
+			</StyledFooter>
 		</AntLayout>
 	)
 }

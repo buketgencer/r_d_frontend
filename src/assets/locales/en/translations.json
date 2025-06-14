@@ -1,3 +1,74 @@
 {
-	"home": {}
+	"home": {},
+	"questions": {
+		"title": "Questions",
+		"addNew": "Add New Question",
+		"table": {
+			"title": "Questions",
+			"actions": "Actions",
+			"view": "View",
+			"edit": "Edit",
+			"delete": "Delete",
+			"empty": "No questions found",
+			"pagination": {
+				"range": "{{from}}-{{to}} of {{total}} questions"
+			}
+		},
+		"modals": {
+			"view": {
+				"title": "Question Details",
+				"question": "Question (Soru)",
+				"procedure": "Procedure (Yordam)",
+				"noProcedure": "No procedure provided"
+			},
+			"add": {
+				"title": "Add New Question",
+				"submit": "Add",
+				"cancel": "Cancel"
+			},
+			"edit": {
+				"title": "Edit Question",
+				"submit": "Update",
+				"cancel": "Cancel"
+			},
+			"delete": {
+				"title": "Delete Question",
+				"description": "Are you sure you want to delete this question?",
+				"confirm": "Yes",
+				"cancel": "No"
+			}
+		},
+		"form": {
+			"question": {
+				"label": "Question (Soru)",
+				"placeholder": "Enter the question...",
+				"required": "Please enter the question",
+				"empty": "Question cannot be empty"
+			},
+			"procedure": {
+				"label": "Procedure (Yordam)",
+				"placeholder": "Enter the procedure (optional)..."
+			}
+		},
+		"messages": {
+			"addSuccess": "Question added successfully",
+			"addError": "Failed to add question",
+			"editSuccess": "Question updated successfully",
+			"editError": "Failed to update question",
+			"deleteSuccess": "Question deleted successfully",
+			"deleteError": "Failed to delete question",
+			"loadError": "Failed to load questions"
+		}
+	},
+	"theme": {
+		"light": "Light",
+		"dark": "Dark",
+		"lightBreeze": "Light Breeze",
+		"midnightBreeze": "Midnight Breeze"
+	},
+	"menu": {
+		"home": "Home",
+		"reports": "Reports",
+		"questions": "Questions"
+	}
 }

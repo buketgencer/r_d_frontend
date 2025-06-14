@@ -1,4 +1,75 @@
 {
 	"home": {},
-	"c1": {}
+	"c1": {},
+	"questions": {
+		"title": "Sorular",
+		"addNew": "Yeni Soru Ekle",
+		"table": {
+			"title": "Sorular",
+			"actions": "İşlemler",
+			"view": "Görüntüle",
+			"edit": "Düzenle",
+			"delete": "Sil",
+			"empty": "Soru bulunamadı",
+			"pagination": {
+				"range": "Toplam {{total}} sorudan {{from}}-{{to}} arası"
+			}
+		},
+		"modals": {
+			"view": {
+				"title": "Soru Detayları",
+				"question": "Soru",
+				"procedure": "Yordam",
+				"noProcedure": "Yordam belirtilmemiş"
+			},
+			"add": {
+				"title": "Yeni Soru Ekle",
+				"submit": "Ekle",
+				"cancel": "İptal"
+			},
+			"edit": {
+				"title": "Soruyu Düzenle",
+				"submit": "Güncelle",
+				"cancel": "İptal"
+			},
+			"delete": {
+				"title": "Soruyu Sil",
+				"description": "Bu soruyu silmek istediğinizden emin misiniz?",
+				"confirm": "Evet",
+				"cancel": "Hayır"
+			}
+		},
+		"form": {
+			"question": {
+				"label": "Soru",
+				"placeholder": "Soruyu girin...",
+				"required": "Lütfen soruyu girin",
+				"empty": "Soru boş olamaz"
+			},
+			"procedure": {
+				"label": "Yordam",
+				"placeholder": "Yordamı girin (isteğe bağlı)..."
+			}
+		},
+		"messages": {
+			"addSuccess": "Soru başarıyla eklendi",
+			"addError": "Soru eklenirken hata oluştu",
+			"editSuccess": "Soru başarıyla güncellendi",
+			"editError": "Soru güncellenirken hata oluştu",
+			"deleteSuccess": "Soru başarıyla silindi",
+			"deleteError": "Soru silinirken hata oluştu",
+			"loadError": "Sorular yüklenirken hata oluştu"
+		}
+	},
+	"theme": {
+		"light": "Açık",
+		"dark": "Koyu",
+		"lightBreeze": "Açık Breeze",
+		"midnightBreeze": "Gece Breeze"
+	},
+	"menu": {
+		"home": "Ana Sayfa",
+		"reports": "Raporlar",
+		"questions": "Sorular"
+	}
 }

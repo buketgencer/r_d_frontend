@@ -1,6 +1,22 @@
 import React from 'react'
-import { Button, Dropdown, MenuProps, Space } from 'antd'
+import { Button, Dropdown, MenuProps } from 'antd'
 import { useTranslation } from 'react-i18next'
+import styled from 'styled-components'
+
+const FlagImage = styled.img`
+	width: 15px;
+	height: 15px;
+	object-fit: cover;
+	border-radius: 2px;
+	vertical-align: middle;
+	margin-right: 4px;
+`
+
+const MenuItemContent = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 4px;
+`
 
 export const LanguageSwitcher: React.FC = () => {
 	const { i18n } = useTranslation()
@@ -10,29 +26,31 @@ export const LanguageSwitcher: React.FC = () => {
 	}
 
 	const getFlagImg = (lang: string) => (
-		<img
+		<FlagImage
 			src={`/${lang}-flag.svg`}
 			alt={`${lang} flag`}
-			style={{
-				width: 15,
-				height: 15,
-				objectFit: 'cover',
-				borderRadius: 2,
-			}}
 		/>
 	)
 
 	const items: MenuProps['items'] = [
 		{
 			key: 'en',
-			icon: getFlagImg('en'),
-			label: 'English',
+			label: (
+				<MenuItemContent>
+					{getFlagImg('en')}
+					<span>English</span>
+				</MenuItemContent>
+			),
 			onClick: () => changeLanguage('en'),
 		},
 		{
 			key: 'tr',
-			icon: getFlagImg('tr'),
-			label: 'Türkçe',
+			label: (
+				<MenuItemContent>
+					{getFlagImg('tr')}
+					<span>Türkçe</span>
+				</MenuItemContent>
+			),
 			onClick: () => changeLanguage('tr'),
 		},
 	]
