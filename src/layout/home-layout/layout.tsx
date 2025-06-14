@@ -27,7 +27,7 @@ export const HomeLayout: React.FC<LayoutProps> = ({
 	minSidebarWidth = 120,
 
 	maxSidebarWidth = 600,
-  children,
+	children,
 }) => {
 	const { collapsed, setCollapsed, siderWidth, isDragging, startResizing } =
 		useSidebarState({

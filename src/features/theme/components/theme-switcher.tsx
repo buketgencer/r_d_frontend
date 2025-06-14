@@ -1,48 +1,76 @@
-import { BulbOutlined, BulbFilled } from '@ant-design/icons'
-import { Select, Space, Typography } from 'antd'
-import React, { ReactElement } from 'react'
+import {
+	SunOutlined,
+	MoonOutlined,
+	CloudOutlined,
+	CloudFilled,
+} from '@ant-design/icons'
+import { Button, Dropdown, MenuProps, Space } from 'antd'
+import React from 'react'
 import { ThemeName } from '../utils/types'
 import { useTheme } from '../utils/useTheme'
 
-type Options = {
-	value: ThemeName
+type ThemeMenuItem = Required<MenuProps>['items'][number] & {
 	label: string
-	icon: ReactElement
-}[]
+}
 
-const { Text } = Typography
-
-const ThemeSwitcher: React.FC = () => {
+export const ThemeSwitcher: React.FC = () => {
 	const { currentTheme, setTheme } = useTheme()
 
-	const options: Options = [
-		{ value: 'light', label: 'Light', icon: <BulbOutlined /> },
-		{ value: 'dark', label: 'Dark', icon: <BulbFilled /> },
-		{ value: 'light-breeze', label: 'Light Breeze', icon: <BulbOutlined /> },
+	const getThemeIcon = (theme: ThemeName) => {
+		switch (theme) {
+			case 'light':
+				return <SunOutlined />
+			case 'dark':
+				return <MoonOutlined />
+			case 'light-breeze':
+				return <CloudOutlined />
+			case 'midnight-breeze':
+				return <CloudFilled />
+			default:
+				return <SunOutlined />
+		}
+	}
+
+	const items: ThemeMenuItem[] = [
 		{
-			value: 'midnight-breeze',
+			key: 'light',
+			icon: getThemeIcon('light'),
+			label: 'Light',
+			onClick: () => setTheme('light'),
+		},
+		{
+			key: 'dark',
+			icon: getThemeIcon('dark'),
+			label: 'Dark',
+			onClick: () => setTheme('dark'),
+		},
+		{
+			key: 'light-breeze',
+			icon: getThemeIcon('light-breeze'),
+			label: 'Light Breeze',
+			onClick: () => setTheme('light-breeze'),
+		},
+		{
+			key: 'midnight-breeze',
+			icon: getThemeIcon('midnight-breeze'),
 			label: 'Midnight Breeze',
-			icon: <BulbFilled />,
+			onClick: () => setTheme('midnight-breeze'),
 		},
 	]
 
 	return (
-		<Space>
-			<Text>Theme:</Text>
-			<Select
-				value={currentTheme}
-				onChange={(value: ThemeName) => setTheme(value)}
-				options={options}
-				optionRender={(option) => (
-					<Space>
-						{option.data.icon}
-						{option.data.label}
-					</Space>
-				)}
-				style={{ width: 180 }}
-			/>
-		</Space>
+		<Dropdown
+			menu={{ items }}
+			trigger={['click']}
+		>
+			<Button
+				size='middle'
+				icon={getThemeIcon(currentTheme)}
+				variant='text'
+				color='default'
+			>
+				{items.find((item) => item?.key === currentTheme)?.label}
+			</Button>
+		</Dropdown>
 	)
 }
-
-export default ThemeSwitcher

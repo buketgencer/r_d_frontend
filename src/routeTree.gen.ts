@@ -12,12 +12,26 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as RdReportDocumentsIndexImport } from './routes/rd-report-documents/index'
+import { Route as QuestionsIndexImport } from './routes/questions/index'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const RdReportDocumentsIndexRoute = RdReportDocumentsIndexImport.update({
+  id: '/rd-report-documents/',
+  path: '/rd-report-documents/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuestionsIndexRoute = QuestionsIndexImport.update({
+  id: '/questions/',
+  path: '/questions/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +46,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/questions/': {
+      id: '/questions/'
+      path: '/questions'
+      fullPath: '/questions'
+      preLoaderRoute: typeof QuestionsIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/rd-report-documents/': {
+      id: '/rd-report-documents/'
+      path: '/rd-report-documents'
+      fullPath: '/rd-report-documents'
+      preLoaderRoute: typeof RdReportDocumentsIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/questions': typeof QuestionsIndexRoute
+  '/rd-report-documents': typeof RdReportDocumentsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/questions': typeof QuestionsIndexRoute
+  '/rd-report-documents': typeof RdReportDocumentsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/questions/': typeof QuestionsIndexRoute
+  '/rd-report-documents/': typeof RdReportDocumentsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/questions' | '/rd-report-documents'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/questions' | '/rd-report-documents'
+  id: '__root__' | '/' | '/questions/' | '/rd-report-documents/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  QuestionsIndexRoute: typeof QuestionsIndexRoute
+  RdReportDocumentsIndexRoute: typeof RdReportDocumentsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  QuestionsIndexRoute: QuestionsIndexRoute,
+  RdReportDocumentsIndexRoute: RdReportDocumentsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +115,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/questions/",
+        "/rd-report-documents/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/questions/": {
+      "filePath": "questions/index.tsx"
+    },
+    "/rd-report-documents/": {
+      "filePath": "rd-report-documents/index.tsx"
     }
   }
 }

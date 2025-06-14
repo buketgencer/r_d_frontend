@@ -1,8 +1,9 @@
 import {
-	UserOutlined,
-	VideoCameraOutlined,
-	UploadOutlined,
+	FileTextOutlined,
+	HomeOutlined,
+	QuestionCircleOutlined,
 } from '@ant-design/icons'
+import { Link } from '@tanstack/react-router'
 import { Layout, Menu } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
@@ -14,6 +15,7 @@ const StyledSider = styled(Sider)<{ $isDragging: boolean }>`
 	height: 100vh;
 	position: sticky;
 	inset-inline-start: 0;
+	width: 100%;
 	top: 0;
 	bottom: 0;
 	scrollbar-width: thin;
@@ -33,11 +35,18 @@ const ResizeHandle = styled.div<{ $width: number }>`
 	background: transparent;
 	cursor: ew-resize;
 	z-index: 100;
-
 	&:hover {
 		background: ${(props) => props.theme.colorPrimary};
 		opacity: 0.2;
 	}
+`
+
+const SidebarPlaceholder = styled.div`
+	padding: 16px;
+	color: ${(props) => props.theme.colorTextSecondary};
+	font-size: 12px;
+	text-align: center;
+	border-bottom: 1px solid ${(props) => props.theme.colorBorder};
 `
 
 interface ResizableSidebarProps {
@@ -58,55 +67,58 @@ export const ResizableSidebar: React.FC<ResizableSidebarProps> = ({
 	handleWidth = 3,
 }) => {
 	return (
-		<StyledSider
-			trigger={null}
-			collapsible
-			collapsed={collapsed}
-			collapsedWidth={collapsedWidth}
-			width={siderWidth}
-			$isDragging={isDragging}
-		>
-			<SidebarMenu />
-			{!collapsed && (
-				<ResizeHandle
-					$width={handleWidth}
-					onMouseDown={startResizing}
-				/>
-			)}
-		</StyledSider>
+		<>
+			<StyledSider
+				trigger={null}
+				collapsible
+				collapsed={collapsed}
+				collapsedWidth={collapsedWidth}
+				width={siderWidth}
+				$isDragging={isDragging}
+			>
+				{<SidebarPlaceholder>Navigation Menu</SidebarPlaceholder>}
+				<SidebarMenu />
+				{!collapsed && (
+					<ResizeHandle
+						$width={handleWidth}
+						onMouseDown={startResizing}
+					/>
+				)}
+			</StyledSider>
+		</>
 	)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface SidebarMenuProps {}
-
-const SidebarMenu: React.FC<SidebarMenuProps> = () => {
+const SidebarMenu: React.FC = () => {
 	return (
 		<Menu
 			mode='inline'
-			defaultSelectedKeys={['1']}
+			defaultSelectedKeys={['home']}
 			style={{
 				height: '100vh',
 				border: 'none',
 				overflowY: 'auto',
 				scrollbarWidth: 'thin',
 				scrollbarGutter: 'stable',
+				width: '100%',
+				paddingLeft: 12,
+				paddingTop: 16,
 			}}
 			items={[
 				{
-					key: '1',
-					icon: <UserOutlined />,
-					label: 'nav 1',
+					key: 'home',
+					icon: <HomeOutlined />,
+					label: <Link to='/'>Ana Sayfa</Link>,
 				},
 				{
-					key: '2',
-					icon: <VideoCameraOutlined />,
-					label: 'nav 2',
+					key: 'pdfs',
+					icon: <FileTextOutlined />,
+					label: <Link to='/rd-report-documents'>Raporlar</Link>,
 				},
 				{
-					key: '3',
-					icon: <UploadOutlined />,
-					label: 'nav 3',
+					key: 'questions',
+					icon: <QuestionCircleOutlined />,
+					label: <Link to='/questions'>Sorular</Link>,
 				},
 			]}
 		/>

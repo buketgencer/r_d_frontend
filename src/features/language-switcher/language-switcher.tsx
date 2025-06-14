@@ -1,31 +1,57 @@
 import React from 'react'
+import { Button, Dropdown, MenuProps, Space } from 'antd'
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
-
-const StyledButton = styled.button`
-	padding: 0.5rem 1rem;
-	background-color: ${(props) => props.theme.colorPrimary};
-	color: white;
-	border-radius: 0.5rem;
-	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-	transition: background-color 0.2s;
-
-	&:hover {
-		background-color: #2563eb;
-	}
-`
 
 export const LanguageSwitcher: React.FC = () => {
 	const { i18n } = useTranslation()
 
-	const toggleLanguage = () => {
-		const newLang = i18n.language === 'en' ? 'tr' : 'en'
-		i18n.changeLanguage(newLang)
+	const changeLanguage = (lng: string) => {
+		i18n.changeLanguage(lng)
 	}
 
+	const getFlagImg = (lang: string) => (
+		<img
+			src={`/${lang}-flag.svg`}
+			alt={`${lang} flag`}
+			style={{
+				width: 15,
+				height: 15,
+				objectFit: 'cover',
+				borderRadius: 2,
+			}}
+		/>
+	)
+
+	const items: MenuProps['items'] = [
+		{
+			key: 'en',
+			icon: getFlagImg('en'),
+			label: 'English',
+			onClick: () => changeLanguage('en'),
+		},
+		{
+			key: 'tr',
+			icon: getFlagImg('tr'),
+			label: 'Türkçe',
+			onClick: () => changeLanguage('tr'),
+		},
+	]
+
+	const currentLang = i18n.language
+
 	return (
-		<StyledButton onClick={toggleLanguage}>
-			{i18n.language === 'en' ? 'Değiştir' : 'Switch'}
-		</StyledButton>
+		<Dropdown
+			menu={{ items }}
+			trigger={['click']}
+		>
+			<Button
+				size='middle'
+				icon={getFlagImg(currentLang)}
+				variant='text'
+				color='default'
+			>
+				{currentLang === 'en' ? 'English' : 'Türkçe'}
+			</Button>
+		</Dropdown>
 	)
 }
