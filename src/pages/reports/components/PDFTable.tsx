@@ -69,6 +69,7 @@ export const PDFTable: React.FC<PDFTableProps> = ({
 
 	return (
 		<Table
+			bordered
 			columns={columns}
 			dataSource={pdfs.map((filename) => ({ key: filename, filename }))}
 			loading={loading}

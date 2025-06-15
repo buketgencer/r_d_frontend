@@ -88,6 +88,24 @@
 			"deleteConfirm": "Bu PDF dosyasını silmek istediğinizden emin misiniz?"
 		}
 	},
+	"results": {
+		"title": "Sonuç Analizi",
+		"loading": "Sonuçlar İşleniyor...",
+		"noResults": {
+			"title": "Sonuç Yok",
+			"description": "Henüz işlenmiş sonuç bulunmuyor. Lütfen ana sayfaya dönüp soruları işleyin."
+		},
+		"metrics": {
+			"totalQuestions": "Toplam Soru",
+			"answersFound": "Bulunan Cevaplar",
+			"answersNotFound": "Bulunamayan Cevaplar"
+		},
+		"status": {
+			"found": "Cevap Bulundu",
+			"notFound": "Cevap Bulunamadı"
+		},
+		"pdfInfo": "İşlenen PDF: {{name}}"
+	},
 	"theme": {
 		"light": "Açık",
 		"dark": "Koyu",

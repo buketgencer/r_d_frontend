@@ -90,6 +90,24 @@
 			"onlyPDF": "Only PDF files are allowed"
 		}
 	},
+	"results": {
+		"title": "Results Analysis",
+		"loading": "Processing Results...",
+		"noResults": {
+			"title": "No Results",
+			"description": "No results have been processed yet. Please go back to the home page and process some questions."
+		},
+		"metrics": {
+			"totalQuestions": "Total Questions",
+			"answersFound": "Answers Found",
+			"answersNotFound": "Answers Not Found"
+		},
+		"status": {
+			"found": "Answer Found",
+			"notFound": "Answer Not Found"
+		},
+		"pdfInfo": "Processed PDF: {{name}}"
+	},
 	"theme": {
 		"light": "Light",
 		"dark": "Dark",

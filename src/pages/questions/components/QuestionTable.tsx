@@ -82,6 +82,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
 
 	return (
 		<Table
+			bordered
 			columns={columns}
 			dataSource={questions}
 			rowKey='id'

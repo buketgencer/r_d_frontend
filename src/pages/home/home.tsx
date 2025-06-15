@@ -1,15 +1,27 @@
 // pages/Home.tsx
 import { PlayCircleOutlined } from '@ant-design/icons'
-import { Row, Col, Button, Alert, Typography, Divider, Flex } from 'antd'
-import React from 'react'
+import {
+	Row,
+	Col,
+	Button,
+	Alert,
+	Typography,
+	Divider,
+	Flex,
+	message,
+} from 'antd'
 import { PDFSelection } from './components/PDFSelection'
 import { QuestionSelection } from './components/QuestionSelection'
 import { SystemMetrics } from './components/SystemMetrics'
 import { useSelections } from './hooks/selection'
+import { resultService } from '@/services/resultService'
+import { useResultsStore } from '@/store/results'
+import { useNavigate } from '@tanstack/react-router'
 
 const { Title } = Typography
 
 export const Home: React.FC = () => {
+	const navigate = useNavigate()
 	const {
 		questions,
 		pdfFiles,
@@ -22,13 +34,28 @@ export const Home: React.FC = () => {
 		refreshData,
 	} = useSelections()
 
-	const handleProcessSelections = () => {
-		const summary = getSelectionSummary()
-		console.log('=== SELECTION SUMMARY ===')
-		console.log('Selected Questions:', summary.questions)
-		console.log('Selected PDF:', summary.pdf)
-		console.log('Counts:', summary.counts)
-		console.log('========================')
+	const setResults = useResultsStore((state) => state.setResults)
+	const setLoading = useResultsStore((state) => state.setLoading)
+	const isProcessing = useResultsStore((state) => state.isLoading)
+
+	const handleProcessSelections = async () => {
+		try {
+			const summary = getSelectionSummary()
+			setLoading(true)
+			const response = await resultService.processQuestions({
+				question_ids: summary.counts.selectedQuestionsData,
+				pdf_name: summary.counts.selectedPDFData || '',
+			})
+
+			setResults(response, summary.counts.selectedPDFData || '')
+			message.success('Questions processed successfully')
+			navigate({ to: '/results' })
+		} catch (error) {
+			message.error('Failed to process questions')
+			console.error('Processing error:', error)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	const disableProcessSelections =
@@ -126,6 +153,7 @@ export const Home: React.FC = () => {
 						onClick={handleProcessSelections}
 						disabled={disableProcessSelections}
 						style={{ minWidth: '200px', width: '100%' }}
+						loading={isProcessing}
 					>
 						Process Selections
 					</Button>

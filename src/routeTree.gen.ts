@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as ResultsIndexImport } from './routes/results/index'
 import { Route as RdReportDocumentsIndexImport } from './routes/rd-report-documents/index'
 import { Route as QuestionsIndexImport } from './routes/questions/index'
 
@@ -20,6 +21,12 @@ import { Route as QuestionsIndexImport } from './routes/questions/index'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ResultsIndexRoute = ResultsIndexImport.update({
+  id: '/results/',
+  path: '/results/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RdReportDocumentsIndexImport
       parentRoute: typeof rootRoute
     }
+    '/results/': {
+      id: '/results/'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -69,12 +83,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/questions': typeof QuestionsIndexRoute
   '/rd-report-documents': typeof RdReportDocumentsIndexRoute
+  '/results': typeof ResultsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/questions': typeof QuestionsIndexRoute
   '/rd-report-documents': typeof RdReportDocumentsIndexRoute
+  '/results': typeof ResultsIndexRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +98,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/questions/': typeof QuestionsIndexRoute
   '/rd-report-documents/': typeof RdReportDocumentsIndexRoute
+  '/results/': typeof ResultsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/questions' | '/rd-report-documents'
+  fullPaths: '/' | '/questions' | '/rd-report-documents' | '/results'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/questions' | '/rd-report-documents'
-  id: '__root__' | '/' | '/questions/' | '/rd-report-documents/'
+  to: '/' | '/questions' | '/rd-report-documents' | '/results'
+  id: '__root__' | '/' | '/questions/' | '/rd-report-documents/' | '/results/'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +114,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   QuestionsIndexRoute: typeof QuestionsIndexRoute
   RdReportDocumentsIndexRoute: typeof RdReportDocumentsIndexRoute
+  ResultsIndexRoute: typeof ResultsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   QuestionsIndexRoute: QuestionsIndexRoute,
   RdReportDocumentsIndexRoute: RdReportDocumentsIndexRoute,
+  ResultsIndexRoute: ResultsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -117,7 +136,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/questions/",
-        "/rd-report-documents/"
+        "/rd-report-documents/",
+        "/results/"
       ]
     },
     "/": {
@@ -128,6 +148,9 @@ export const routeTree = rootRoute
     },
     "/rd-report-documents/": {
       "filePath": "rd-report-documents/index.tsx"
+    },
+    "/results/": {
+      "filePath": "results/index.tsx"
     }
   }
 }
