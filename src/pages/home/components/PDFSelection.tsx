@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons'
 import { Card, Radio, List, Typography, Space, Button } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { PDFSelectionProps } from '../types/selection'
 
 const { Title, Text } = Typography
@@ -16,6 +17,7 @@ export const PDFSelection: React.FC<PDFSelectionProps> = ({
 	onSelectionChange,
 	loading = false,
 }) => {
+	const { t } = useTranslation()
 	const handlePDFChange = (filename: string) => {
 		// If the same PDF is clicked, deselect it
 		const newSelection = selectedPDF === filename ? null : filename
@@ -35,7 +37,7 @@ export const PDFSelection: React.FC<PDFSelectionProps> = ({
 						level={4}
 						style={{ margin: 0 }}
 					>
-						PDF Selection
+						{t('home.pdfSelection.title')}
 					</Title>
 				</div>
 			}
@@ -56,7 +58,7 @@ export const PDFSelection: React.FC<PDFSelectionProps> = ({
 							onClick={handleClear}
 							type='link'
 						>
-							Clear
+							{t('home.pdfSelection.clear')}
 						</Button>
 					)}
 				</Space>
@@ -65,9 +67,7 @@ export const PDFSelection: React.FC<PDFSelectionProps> = ({
 			loading={loading}
 		>
 			<div style={{ marginBottom: 16 }}>
-				<Text type='secondary'>
-					Select one PDF file to include in your selection:
-				</Text>
+				<Text type='secondary'>{t('home.pdfSelection.selectHint')}</Text>
 			</div>
 
 			<Radio.Group
@@ -109,7 +109,7 @@ export const PDFSelection: React.FC<PDFSelectionProps> = ({
 												type='secondary'
 												style={{ fontSize: '12px' }}
 											>
-												PDF Document
+												{t('home.pdfSelection.documentType')}
 											</Text>
 										</div>
 									</div>
@@ -119,8 +119,8 @@ export const PDFSelection: React.FC<PDFSelectionProps> = ({
 					)}
 					locale={{
 						emptyText: loading
-							? 'Loading PDF files...'
-							: 'No PDF files available',
+							? t('home.pdfSelection.loading')
+							: t('home.pdfSelection.noFiles'),
 					}}
 					style={{
 						minHeight: '300px',

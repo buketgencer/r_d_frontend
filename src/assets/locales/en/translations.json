@@ -1,5 +1,40 @@
 {
-	"home": {},
+	"home": {
+		"title": "Selection Manager",
+		"processButton": "Process Selections",
+		"error": {
+			"loadData": "Failed to load selection data",
+			"processQuestions": "Failed to process questions",
+			"success": "Questions processed successfully"
+		},
+		"retry": "Retry",
+		"systemMetrics": {
+			"title": "System Metrics",
+			"totalQuestions": "Total Questions",
+			"totalFiles": "Total PDF Files",
+			"totalItems": "Total Items",
+			"refresh": "Refresh Metrics"
+		},
+		"questionSelection": {
+			"title": "Question Selection",
+			"searchPlaceholder": "Search questions...",
+			"noQuestions": "No questions available",
+			"loading": "Loading questions...",
+			"selectHint": "Select at least 1 question",
+			"selectAll": "Select All",
+			"clearAll": "Clear All",
+			"method": "Method"
+		},
+		"pdfSelection": {
+			"title": "PDF Selection",
+			"searchPlaceholder": "Search PDF files...",
+			"noFiles": "No PDF files available",
+			"loading": "Loading PDF files...",
+			"clear": "Clear",
+			"selectHint": "Select one PDF file to include in your selection",
+			"documentType": "PDF Document"
+		}
+	},
 	"questions": {
 		"title": "Questions",
 		"addNew": "Add New Question",

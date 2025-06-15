@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons'
 import { Card, Checkbox, List, Typography, Button, Space, Flex } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { QuestionSelectionProps } from '../types/selection'
 
 const { Title, Text } = Typography
@@ -16,6 +17,7 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 	onSelectionChange,
 	loading = false,
 }) => {
+	const { t } = useTranslation()
 	const isAllSelected =
 		selectedQuestions.length === questions.length && questions.length > 0
 
@@ -36,7 +38,7 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 						level={4}
 						style={{ margin: 0 }}
 					>
-						Question Selection
+						{t('home.questionSelection.title')}
 					</Title>
 				</div>
 			}
@@ -55,7 +57,7 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 					justify='space-between'
 					align='center'
 				>
-					<Text type='secondary'>Select at least 1 questions</Text>
+					<Text type='secondary'>{t('home.questionSelection.selectHint')}</Text>
 					<Space>
 						<Button
 							size='small'
@@ -63,7 +65,7 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 							onClick={() => onSelectionChange(questions.map((q) => q.id))}
 							disabled={questions.length === 0 || isAllSelected}
 						>
-							Select All
+							{t('home.questionSelection.selectAll')}
 						</Button>
 						<Button
 							size='small'
@@ -71,7 +73,7 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 							onClick={() => onSelectionChange([])}
 							disabled={selectedQuestions.length === 0}
 						>
-							Clear All
+							{t('home.questionSelection.clearAll')}
 						</Button>
 					</Space>
 				</Flex>
@@ -95,7 +97,8 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 										type='secondary'
 										style={{ fontSize: '12px' }}
 									>
-										Method: {question.yordam.trim().slice(0, 100)}
+										{t('home.questionSelection.method')}:{' '}
+										{question.yordam.trim().slice(0, 100)}
 										{question.yordam.length > 100 && '...'}
 									</Text>
 								)}
@@ -105,8 +108,8 @@ export const QuestionSelection: React.FC<QuestionSelectionProps> = ({
 				)}
 				locale={{
 					emptyText: loading
-						? 'Loading questions...'
-						: 'No questions available',
+						? t('home.questionSelection.loading')
+						: t('home.questionSelection.noQuestions'),
 				}}
 				style={{
 					minHeight: '300px',

@@ -11,6 +11,7 @@ import {
 	Flex,
 	message,
 } from 'antd'
+import { useTranslation } from 'react-i18next'
 import { PDFSelection } from './components/PDFSelection'
 import { QuestionSelection } from './components/QuestionSelection'
 import { SystemMetrics } from './components/SystemMetrics'
@@ -21,6 +22,7 @@ import { useResultsStore } from '@/store/results'
 const { Title } = Typography
 
 export const Home: React.FC = () => {
+	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const {
 		questions,
@@ -48,10 +50,10 @@ export const Home: React.FC = () => {
 			})
 
 			setResults(response, summary.counts.selectedPDFData || '')
-			message.success('Questions processed successfully')
+			message.success(t('home.error.success'))
 			navigate({ to: '/results' })
 		} catch (error) {
-			message.error('Failed to process questions')
+			message.error(t('home.error.processQuestions'))
 			console.error('Processing error:', error)
 		} finally {
 			setLoading(false)
@@ -83,13 +85,13 @@ export const Home: React.FC = () => {
 						level={3}
 						style={{ margin: 0 }}
 					>
-						Selection Manager
+						{t('home.title')}
 					</Title>
 				</Flex>
 
 				{error && (
 					<Alert
-						message='Failed to load selection data'
+						message={t('home.error.loadData')}
 						description={error}
 						type='error'
 						showIcon
@@ -100,7 +102,7 @@ export const Home: React.FC = () => {
 								size='small'
 								onClick={refreshData}
 							>
-								Retry
+								{t('home.retry')}
 							</Button>
 						}
 					/>
@@ -155,7 +157,7 @@ export const Home: React.FC = () => {
 						style={{ minWidth: '200px', width: '100%' }}
 						loading={isProcessing}
 					>
-						Process Selections
+						{t('home.processButton')}
 					</Button>
 				</Flex>
 			</>

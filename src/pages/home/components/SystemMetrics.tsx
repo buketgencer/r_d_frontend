@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons'
 import { Row, Col, Button, Alert, Space, Typography } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { MetricCard } from './MetricCard'
 
 const { Title } = Typography
@@ -25,6 +26,8 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 	isLoading,
 	error,
 }) => {
+	const { t } = useTranslation()
+
 	return (
 		<>
 			<div
@@ -40,7 +43,7 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 						level={3}
 						style={{ margin: 0 }}
 					>
-						System Metrics{' '}
+						{t('home.systemMetrics.title')}{' '}
 						<Space>
 							<span style={{ color: '#666', fontSize: '12px' }}>
 								Last updated: {new Date().toLocaleTimeString()}
@@ -54,13 +57,13 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 					loading={isLoading}
 					type='default'
 				>
-					Refresh
+					{t('home.systemMetrics.refresh')}
 				</Button>
 			</div>
 
 			{error && (
 				<Alert
-					message='Failed to load metrics'
+					message={t('home.error.loadData')}
 					description={error}
 					type='error'
 					showIcon
@@ -71,7 +74,7 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 							size='small'
 							onClick={refreshMetrics}
 						>
-							Retry
+							{t('home.retry')}
 						</Button>
 					}
 				/>
@@ -84,7 +87,7 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 					lg={8}
 				>
 					<MetricCard
-						title='Total Questions'
+						title={t('home.systemMetrics.totalQuestions')}
 						value={totalQuestions}
 						icon={<QuestionCircleOutlined />}
 						color='#1890ff'
@@ -98,7 +101,7 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 					lg={8}
 				>
 					<MetricCard
-						title='Total PDF Files'
+						title={t('home.systemMetrics.totalFiles')}
 						value={totalFiles}
 						icon={<FileTextOutlined />}
 						color='#52c41a'
@@ -112,7 +115,7 @@ export const SystemMetrics: React.FC<SystemMetricsProps> = ({
 					lg={8}
 				>
 					<MetricCard
-						title='Total Items'
+						title={t('home.systemMetrics.totalItems')}
 						value={totalQuestions + totalFiles}
 						icon={<FileTextOutlined />}
 						color='#722ed1'

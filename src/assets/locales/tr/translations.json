@@ -1,6 +1,40 @@
 {
-	"home": {},
-	"c1": {},
+	"home": {
+		"title": "Seçim Yöneticisi",
+		"processButton": "Seçimleri İşle",
+		"error": {
+			"loadData": "Seçim verileri yüklenemedi",
+			"processQuestions": "Sorular işlenemedi",
+			"success": "Sorular başarıyla işlendi"
+		},
+		"retry": "Tekrar Dene",
+		"systemMetrics": {
+			"title": "Sistem Metrikleri",
+			"totalQuestions": "Toplam Soru",
+			"totalFiles": "Toplam PDF Dosyası",
+			"totalItems": "Toplam Öğe",
+			"refresh": "Metrikleri Yenile"
+		},
+		"questionSelection": {
+			"title": "Soru Seçimi",
+			"searchPlaceholder": "Sorularda ara...",
+			"noQuestions": "Kullanılabilir soru yok",
+			"loading": "Sorular yükleniyor...",
+			"selectHint": "En az 1 soru seçin",
+			"selectAll": "Tümünü Seç",
+			"clearAll": "Tümünü Temizle",
+			"method": "Yordam"
+		},
+		"pdfSelection": {
+			"title": "PDF Seçimi",
+			"searchPlaceholder": "PDF dosyalarında ara...",
+			"noFiles": "Kullanılabilir PDF dosyası yok",
+			"loading": "PDF dosyaları yükleniyor...",
+			"clear": "Temizle",
+			"selectHint": "Seçiminize dahil etmek için bir PDF dosyası seçin",
+			"documentType": "PDF Belgesi"
+		}
+	},
 	"questions": {
 		"title": "Sorular",
 		"addNew": "Yeni Soru Ekle",
