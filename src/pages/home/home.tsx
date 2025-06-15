@@ -1,5 +1,6 @@
 // pages/Home.tsx
 import { PlayCircleOutlined } from '@ant-design/icons'
+import { useNavigate } from '@tanstack/react-router'
 import {
 	Row,
 	Col,
@@ -16,7 +17,6 @@ import { SystemMetrics } from './components/SystemMetrics'
 import { useSelections } from './hooks/selection'
 import { resultService } from '@/services/resultService'
 import { useResultsStore } from '@/store/results'
-import { useNavigate } from '@tanstack/react-router'
 
 const { Title } = Typography
 

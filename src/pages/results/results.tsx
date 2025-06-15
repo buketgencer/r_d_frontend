@@ -1,4 +1,11 @@
-import React from 'react'
+import {
+	FileTextOutlined,
+	CheckCircleOutlined,
+	CloseCircleOutlined,
+	QuestionCircleOutlined,
+	CloseOutlined,
+} from '@ant-design/icons'
+import { useNavigate } from '@tanstack/react-router'
 import {
 	Typography,
 	Card,
@@ -11,18 +18,11 @@ import {
 	Space,
 	Button,
 } from 'antd'
-import { useResultsStore } from '@/store/results'
-import {
-	FileTextOutlined,
-	CheckCircleOutlined,
-	CloseCircleOutlined,
-	QuestionCircleOutlined,
-	LeftOutlined,
-} from '@ant-design/icons'
-import { MetricCard } from '../home/components/MetricCard'
-import { StatusDot } from './components/StatusDot'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from '@tanstack/react-router'
+import { StatusDot } from './components/StatusDot'
+import { MetricCard } from '../home/components/MetricCard'
+import { useResultsStore } from '@/store/results'
 
 const { Title, Text } = Typography
 
@@ -92,7 +92,7 @@ export const Results: React.FC = () => {
 					color='default'
 					variant='text'
 					size='large'
-					icon={<LeftOutlined />}
+					icon={<CloseOutlined />}
 					onClick={() => navigate({ to: '/' })}
 				/>
 			</div>
